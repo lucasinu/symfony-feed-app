@@ -1,6 +1,8 @@
 twig:
-    file_name_pattern: '*.twig'
+  file_name_pattern: "*.twig"
+  globals:
+    knp_pagination: "@knp_paginator"
 
 when@test:
-    twig:
-        strict_variables: true
+  twig:
+    strict_variables: true

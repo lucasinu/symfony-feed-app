@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1>Product index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>External_id</th>
+                <th>Sku</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Link</th>
+                <th>Image</th>
+                <th>Rating</th>
+                <th>Count</th>
+                <th>Caffeine_type</th>
+                <th>Flavored</th>
+                <th>Seasonal</th>
+                <th>In_stock</th>
+                <th>Facebook</th>
+                <th>Is_k_cup</th>
+                <th>Short_description</th>
+                <th>Description</th>
+                <th>Brand_id</th>
+                <th>Category_id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.externalId }}</td>
+                <td>{{ product.sku }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.link }}</td>
+                <td>{{ product.image }}</td>
+                <td>{{ product.rating }}</td>
+                <td>{{ product.count }}</td>
+                <td>{{ product.caffeineType }}</td>
+                <td>{{ product.flavored ? 'Yes' : 'No' }}</td>
+                <td>{{ product.seasonal ? 'Yes' : 'No' }}</td>
+                <td>{{ product.inStock ? 'Yes' : 'No' }}</td>
+                <td>{{ product.facebook ? 'Yes' : 'No' }}</td>
+                <td>{{ product.isKCup ? 'Yes' : 'No' }}</td>
+                <td>{{ product.shortDescription }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.brandId }}</td>
+                <td>{{ product.categoryId }}</td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_new') }}">Create new</a>
+{% endblock %}
