@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use App\Service\ProductService;
 use App\Service\LogService;
 
-class ImportXmlController extends Command
+class ImportXmlCommand extends Command
 {
     private $productService;
     private $logService;
@@ -19,7 +19,7 @@ class ImportXmlController extends Command
     private $newItems = 0;
     private $logData = [];
 
-    public function __construct(?ProductService $productService, ?LogService $logService)
+    public function __construct(ProductService $productService, LogService $logService)
     {
         $this->productService = $productService;
         $this->logService = $logService;
